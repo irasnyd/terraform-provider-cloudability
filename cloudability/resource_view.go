@@ -4,6 +4,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/skyscrapr/cloudability-sdk-go/cloudability"
 	"log"
+	"time"
 )
 
 func resourceView() *schema.Resource {
@@ -63,6 +64,9 @@ func resourceView() *schema.Resource {
 				},
 				Description: "list of filter objects. If multiple filters are applied on the same dimension they are OR'd, however if they are on different dimensions they are AND'd. See below regarding filter specifics.",
 			},
+		},
+		Timeouts: &schema.ResourceTimeout{
+			Default: schema.DefaultTimeout(1 * time.Minute),
 		},
 	}
 }

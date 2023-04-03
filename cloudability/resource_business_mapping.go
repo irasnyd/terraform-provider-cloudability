@@ -5,6 +5,7 @@ import (
 	"github.com/skyscrapr/cloudability-sdk-go/cloudability"
 	"log"
 	"strconv"
+	"time"
 )
 
 func resourceBusinessMapping() *schema.Resource {
@@ -56,6 +57,9 @@ func resourceBusinessMapping() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+		},
+		Timeouts: &schema.ResourceTimeout{
+			Default: schema.DefaultTimeout(1 * time.Minute),
 		},
 	}
 }

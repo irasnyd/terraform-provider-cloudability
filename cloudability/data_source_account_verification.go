@@ -64,6 +64,9 @@ func dataSourceAccountVerification() *schema.Resource {
 				Description: "Dummy dependency to avoid depends_on bug",
 			},
 		},
+		Timeouts: &schema.ResourceTimeout{
+			Default: schema.DefaultTimeout(1 * time.Minute),
+		},
 	}
 }
 

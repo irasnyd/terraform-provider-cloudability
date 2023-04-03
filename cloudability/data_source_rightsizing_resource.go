@@ -4,6 +4,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/skyscrapr/cloudability-sdk-go/cloudability"
 	"log"
+	"time"
 )
 
 func dataSourceRightsizingResource() *schema.Resource {
@@ -55,6 +56,9 @@ func dataSourceRightsizingResource() *schema.Resource {
 				},
 				Description: "List of recommendation objects.",
 			},
+		},
+		Timeouts: &schema.ResourceTimeout{
+			Default: schema.DefaultTimeout(1 * time.Minute),
 		},
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/skyscrapr/cloudability-sdk-go/cloudability"
 	"strconv"
+	"time"
 )
 
 func resourceUser() *schema.Resource {
@@ -51,6 +52,9 @@ func resourceUser() *schema.Resource {
 				Default:     nil,
 				Description: "Filter set id used by default for the user",
 			},
+		},
+		Timeouts: &schema.ResourceTimeout{
+			Default: schema.DefaultTimeout(1 * time.Minute),
 		},
 	}
 }

@@ -5,6 +5,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/skyscrapr/cloudability-sdk-go/cloudability"
 	"log"
+	"time"
 )
 
 func resourceLinkedAccount() *schema.Resource {
@@ -104,6 +105,9 @@ func resourceLinkedAccount() *schema.Resource {
 				Computed:    true,
 				Description: "Date timestamp corresponding to cloudability credential creation time",
 			},
+		},
+		Timeouts: &schema.ResourceTimeout{
+			Default: schema.DefaultTimeout(1 * time.Minute),
 		},
 	}
 }

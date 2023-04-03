@@ -5,6 +5,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/skyscrapr/cloudability-sdk-go/cloudability"
 	"log"
+	"time"
 )
 
 func resourceMasterAccount() *schema.Resource {
@@ -122,6 +123,9 @@ func resourceMasterAccount() *schema.Resource {
 				ForceNew:    true,
 				Description: "Cost and usage report prefix",
 			},
+		},
+		Timeouts: &schema.ResourceTimeout{
+			Default: schema.DefaultTimeout(1 * time.Minute),
 		},
 	}
 }
